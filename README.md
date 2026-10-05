@@ -2,6 +2,8 @@
 
 A fashion storefront built with React, Redux Toolkit and Tailwind CSS. You can browse products, view details, search, add items to a bag and place an order. Product data comes from the free [DummyJSON](https://dummyjson.com) API.
 
+**[Live demo](https://wearly-fashion-store.vercel.app)**
+
 ![Wearly mockup](docs/mockup.jpg)
 
 ## Features
