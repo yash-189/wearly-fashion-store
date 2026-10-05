@@ -10,6 +10,7 @@ const productSlice = createSlice({
     productList:[],
     items: [],
     singleItem: null,
+    detailStatus: 'idle',
     categories: [],
     error: null,
     status: 'idle',
@@ -39,16 +40,14 @@ const productSlice = createSlice({
         state.status = 'error';
       })
       .addCase(fetchSingleItem.pending, (state) => {
-        state.error = null;
-        state.status = 'loading';
+        state.detailStatus = 'loading';
       })
       .addCase(fetchSingleItem.fulfilled, (state, action) => {
         state.singleItem = action.payload;
-        state.status = 'success';
+        state.detailStatus = 'success';
       })
-      .addCase(fetchSingleItem.rejected, (state, action) => {
-        state.error = action.payload;
-        state.status = 'error';
+      .addCase(fetchSingleItem.rejected, (state) => {
+        state.detailStatus = 'error';
       })
       .addCase(fetchCategory.pending, (state) => {
         state.error = null;
@@ -89,3 +88,4 @@ export const selectItemStatus = (state) => state.items.status;
 export const selectItemError = (state) => state.items.error;
 export const selectCategories = (state) => state.items.categories;
 export const selectProductList = (state) => state.items.productList;
+export const selectDetailStatus = (state) => state.items.detailStatus;

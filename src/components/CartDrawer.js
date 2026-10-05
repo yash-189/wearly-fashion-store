@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   removeFromCart,
   selectCartLines,
@@ -8,13 +9,12 @@ import {
   setCartOpen,
   setQty,
 } from "../features/cart/cartSlice";
-import { formatPrice } from "../utils/format";
+import { FREE_SHIPPING, formatPrice } from "../utils/format";
 import { BagIcon, CloseIcon } from "./Icons";
-
-const FREE_SHIPPING = 150;
 
 export default function CartDrawer() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const open = useSelector(selectCartOpen);
   const lines = useSelector(selectCartLines);
   const total = useSelector(selectCartTotal);
@@ -121,7 +121,12 @@ export default function CartDrawer() {
                 <span className="font-medium tabular-nums">{formatPrice(total)}</span>
               </div>
               <p className="mt-1 text-xs text-ink-faint">Taxes and shipping calculated at checkout.</p>
-              <button className="mt-4 w-full rounded-full bg-ink py-3.5 text-sm font-medium text-paper transition-colors hover:bg-accent">
+              <button
+                onClick={() => {
+                  close();
+                  navigate("/checkout");
+                }}
+                className="mt-4 w-full rounded-full bg-ink py-3.5 text-sm font-medium text-paper transition-colors hover:bg-accent">
                 Checkout
               </button>
             </div>

@@ -14,3 +14,6 @@ export const SORTS = {
   "price-desc": { label: "Price: high to low", fn: (a, b) => b.price - a.price },
   rating: { label: "Top rated", fn: (a, b) => b.rate - a.rate },
 };
+
+export const FREE_SHIPPING = 150;
+export const SHIPPING_FEE = 9.99;

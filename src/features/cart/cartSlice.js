@@ -34,13 +34,16 @@ const cartSlice = createSlice({
     removeFromCart: (state, { payload: id }) => {
       state.lines = state.lines.filter((l) => l.id !== id);
     },
+    clearCart: (state) => {
+      state.lines = [];
+    },
     setCartOpen: (state, { payload }) => {
       state.open = payload;
     },
   },
 });
 
-export const { addToCart, setQty, removeFromCart, setCartOpen } = cartSlice.actions;
+export const { addToCart, setQty, removeFromCart, clearCart, setCartOpen } = cartSlice.actions;
 export default cartSlice.reducer;
 
 export const selectCartLines = (state) => state.cart.lines;

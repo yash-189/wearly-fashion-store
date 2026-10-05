@@ -23,6 +23,13 @@ const toItem = (p) => ({
   description: p.description,
   category: p.category,
   image: p.thumbnail,
+  images: p.images ?? [p.thumbnail],
+  brand: p.brand,
+  stock: p.stock,
+  shipping: p.shippingInformation,
+  returns: p.returnPolicy,
+  warranty: p.warrantyInformation,
+  reviews: p.reviews ?? [],
   rate: p.rating,
   rating: { rate: p.rating, count: p.stock },
 });

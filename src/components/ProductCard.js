@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { addToCart } from "../features/cart/cartSlice";
 import { formatCategory, formatPrice } from "../utils/format";
 import { StarIcon } from "./Icons";
@@ -9,14 +10,16 @@ export default function ProductCard({ product }) {
   return (
     <article className="group flex flex-col">
       <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-paper-dim">
+        <Link to={`/product/${product.id}`} className="absolute inset-0" aria-label={product.title} />
         <img
           src={product.image}
           alt={product.title}
           loading="lazy"
-          className="h-full w-full object-contain p-6 mix-blend-multiply transition-transform duration-500 ease-out group-hover:scale-105"
+          className="pointer-events-none h-full w-full object-contain p-6 mix-blend-multiply transition-transform duration-500 ease-out group-hover:scale-105"
         />
         <button
           onClick={() => dispatch(addToCart(product))}
+          aria-label={`Add ${product.title} to bag`}
           className="absolute inset-x-3 bottom-3 rounded-full bg-ink py-2.5 text-sm font-medium text-paper transition-all duration-300 hover:bg-accent sm:translate-y-2 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 sm:focus:translate-y-0 sm:focus:opacity-100"
         >
           Add to bag
@@ -26,7 +29,11 @@ export default function ProductCard({ product }) {
       <div className="mt-4 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
         <div className="min-w-0">
           <p className="text-xs uppercase tracking-wider text-ink-faint">{formatCategory(product.category)}</p>
-          <h3 className="mt-1 truncate text-[15px] font-medium">{product.title}</h3>
+          <h3 className="mt-1 truncate text-[15px] font-medium">
+            <Link to={`/product/${product.id}`} className="hover:underline hover:underline-offset-4">
+              {product.title}
+            </Link>
+          </h3>
         </div>
         <p className="shrink-0 text-[15px] font-medium tabular-nums">{formatPrice(product.price)}</p>
       </div>

@@ -6,7 +6,10 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { fetchitems } from "./features/items/api";
 import { selectProductList } from "./features/items/itemSlice";
+import CheckoutPage from "./pages/CheckoutPage";
 import Home from "./pages/Home";
+import OrderConfirmedPage from "./pages/OrderConfirmedPage";
+import ProductPage from "./pages/ProductPage";
 import SearchPage from "./pages/SearchPage";
 
 function Layout() {
@@ -37,6 +40,9 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "search/:searchTerm", element: <SearchPage /> },
+      { path: "product/:id", element: <ProductPage /> },
+      { path: "checkout", element: <CheckoutPage /> },
+      { path: "order-confirmed", element: <OrderConfirmedPage /> },
     ],
   },
 ]);

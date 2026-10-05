@@ -1,6 +1,6 @@
 # Wearly
 
-A fashion storefront built with React, Redux Toolkit and Tailwind CSS. You can browse products, filter and sort them, search, and add items to a shopping bag. Product data comes from the free [DummyJSON](https://dummyjson.com) API.
+A fashion storefront built with React, Redux Toolkit and Tailwind CSS. You can browse products, view details, search, add items to a bag and place an order. Product data comes from the free [DummyJSON](https://dummyjson.com) API.
 
 ![Wearly mockup](docs/mockup.jpg)
 
@@ -8,6 +8,8 @@ A fashion storefront built with React, Redux Toolkit and Tailwind CSS. You can b
 
 - Category filters, sorting by price or rating, and a responsive product grid
 - Search from the header
+- Product page with an image gallery, quantity picker, shipping and returns info, reviews and related products
+- Checkout with form validation, an order summary and an order confirmation page
 - Shopping bag drawer with quantity controls, subtotal and a free shipping progress bar, saved in localStorage
 - Skeleton loaders, error state with retry, and empty search results
 - Keyboard support (Esc closes the bag), focus rings, ARIA labels and reduced motion support
@@ -19,9 +21,13 @@ A fashion storefront built with React, Redux Toolkit and Tailwind CSS. You can b
 |---|---|
 | ![Home](docs/home.jpg) | ![Catalog](docs/catalog.jpg) |
 
-| Shopping bag | Search |
+| Product | Shopping bag |
 |---|---|
-| ![Bag](docs/cart.jpg) | ![Search](docs/search.jpg) |
+| ![Product](docs/product.jpg) | ![Bag](docs/cart.jpg) |
+
+| Checkout | Order confirmed |
+|---|---|
+| ![Checkout](docs/checkout.jpg) | ![Order confirmed](docs/confirmed.jpg) |
 
 <img src="docs/mobile.jpg" width="260" alt="Mobile" />
 
@@ -41,7 +47,7 @@ src/
 │   ├── items/      # product thunks (createAsyncThunk) and slice
 │   └── cart/       # cart slice, persisted to localStorage
 ├── components/     # Navbar, Hero, Catalog, ProductCard, CartDrawer, Logo
-├── pages/          # Home, Search
+├── pages/          # Home, Search, Product, Checkout, Order confirmed
 ├── utils/          # price and category formatting, sort options
 └── brand.js        # store name and tagline
 ```

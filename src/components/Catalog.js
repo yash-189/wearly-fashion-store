@@ -1,5 +1,6 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import { fetchitems } from "../features/items/api";
 import { selectItemError, selectItemStatus, selectProductList } from "../features/items/itemSlice";
 import { SORTS, formatCategory } from "../utils/format";
@@ -10,7 +11,16 @@ export default function Catalog({ query = "", title, subtitle }) {
   const products = useSelector(selectProductList);
   const status = useSelector(selectItemStatus);
   const error = useSelector(selectItemError);
-  const [category, setCategory] = useState("all");
+  const [params] = useSearchParams();
+  const [category, setCategory] = useState(params.get("category") ?? "all");
+
+  useEffect(() => {
+    const c = params.get("category");
+    if (c) {
+      setCategory(c);
+      document.getElementById("catalog")?.scrollIntoView();
+    }
+  }, [params]);
   const [sort, setSort] = useState("featured");
 
   const matches = useMemo(() => {
