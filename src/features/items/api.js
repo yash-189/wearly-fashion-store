@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// Free public API, no key needed: https://dummyjson.com
 const api = process.env.REACT_APP_API_URL || "https://dummyjson.com";
 
 const FASHION_CATEGORIES = [
@@ -17,7 +16,6 @@ const FASHION_CATEGORIES = [
   "womens-jewellery",
 ];
 
-// Map DummyJSON products to the shape the UI expects
 const toItem = (p) => ({
   id: p.id,
   title: p.title,

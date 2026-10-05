@@ -1,60 +1,46 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Outlet, RouterProvider, ScrollRestoration, createBrowserRouter } from "react-router-dom";
+import CartDrawer from "./components/CartDrawer";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import { fetchitems } from "./features/items/api";
+import { selectProductList } from "./features/items/itemSlice";
+import Home from "./pages/Home";
+import SearchPage from "./pages/SearchPage";
 
-import './App.css';
-import {
-  createBrowserRouter,
-  Outlet,
-  RouterProvider,
-} from "react-router-dom";
-import Home from './pages/Home';
-import Navbar from './components/Navbar';
-import SearchPage from './pages/SearchPage';
+function Layout() {
+  const dispatch = useDispatch();
+  const products = useSelector(selectProductList);
 
-
-function App() {
-
-
-
-
-
-
-
-
-  const NavbarWrapper = () => {
-    return (
-      <div>
-        <Navbar />
-        <Outlet />
-      </div>
-    )
-  };
-
-
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <NavbarWrapper />,
-      children: [
-        {
-          path: "/",
-          element: <Home />
-        },
-        {
-          path: "search/:searchTerm",
-          element: <SearchPage />
-        },
-      ],
-
-
-    }
-  ])
-
-
+  useEffect(() => {
+    if (products.length === 0) dispatch(fetchitems());
+  }, [dispatch, products.length]);
 
   return (
-    <>
-      <RouterProvider router={router} />
-    </>
+    <div className="flex min-h-screen flex-col">
+      <Navbar />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
+      <CartDrawer />
+      <ScrollRestoration />
+    </div>
   );
 }
 
-export default App;
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "search/:searchTerm", element: <SearchPage /> },
+    ],
+  },
+]);
+
+export default function App() {
+  return <RouterProvider router={router} />;
+}

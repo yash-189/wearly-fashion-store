@@ -30,7 +30,6 @@ const productSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchitems.fulfilled, (state, action) => {
-        console.log(action);
         state.items = action.payload;
         state.productList = action.payload
         state.status = 'success';
@@ -89,3 +88,4 @@ export const selectSingleItem = (state) => state.items.singleItem;
 export const selectItemStatus = (state) => state.items.status;
 export const selectItemError = (state) => state.items.error;
 export const selectCategories = (state) => state.items.categories;
+export const selectProductList = (state) => state.items.productList;
