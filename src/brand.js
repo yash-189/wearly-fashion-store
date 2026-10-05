@@ -1,4 +1,4 @@
 export const BRAND = {
   name: "Wearly",
-  tagline: "Everyday fashion, thoughtfully picked.",
+  tagline: "Everyday clothes at fair prices.",
 };

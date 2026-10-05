@@ -11,21 +11,20 @@ export default function Hero() {
   return (
     <section className="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-8 pt-10 sm:px-6 md:grid-cols-[1.1fr_1fr] md:pt-16 lg:gap-16 lg:px-8">
       <div>
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">New season · Autumn edit</p>
-        <h1 className="mt-5 font-display text-5xl font-medium leading-[1.02] tracking-tightest sm:text-6xl lg:text-7xl">
-          Clothes you'll
+        <h1 className="font-display text-5xl font-medium leading-[1.02] tracking-tightest sm:text-6xl lg:text-7xl">
+          New in
           <br />
-          <em className="font-normal italic text-ink-soft">actually</em> wear.
+          for autumn
         </h1>
         <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-soft">
-          A small, considered edit of dresses, shirts, shoes and accessories, for every day rather than one day.
+          Dresses, shirts, shoes and bags for everyday wear.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <a
             href="#catalog"
             className="group inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-paper transition-colors hover:bg-accent"
           >
-            Shop the edit
+            Shop now
             <ArrowIcon width={16} height={16} className="transition-transform group-hover:translate-x-0.5" />
           </a>
           <p className="text-sm text-ink-soft">Free shipping over $150</p>

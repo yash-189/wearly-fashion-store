@@ -63,7 +63,7 @@ export default function CartDrawer() {
                     Add <span className="font-medium text-ink">{formatPrice(remaining)}</span> for free shipping
                   </>
                 ) : (
-                  "You've unlocked free shipping"
+                  "This order ships free"
                 )}
               </p>
               <div className="mt-2 h-1 overflow-hidden rounded-full bg-paper-dim">
